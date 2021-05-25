@@ -13,10 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+// フロント
+Route::get('/{any?}', function() {
+    return view('app');
+})->where('any', '^(?!.*edit).*$');
+
+// 管理画面
+Route::group(['middleware' => 'basicauth'], function() {
+    Route::get('/edit/{any?}', function() {
+        return view('edit');
+    })->where('any', '.*');
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
