@@ -7,14 +7,15 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Vue Laravel SPA') }}</title>
+        <title>{{ config('app.name', 'Music') }}</title>
 
         <!-- Styles -->
         <link href="{{ mix('/css/edit.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="edit">
-bbb
+        <header-component></header-component>
+        <router-view></router-view>
         </div>
         <!-- Scripts -->
         <script src="{{ mix('/js/edit.js') }}" defer></script>
