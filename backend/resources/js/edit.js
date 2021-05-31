@@ -9,6 +9,9 @@ import HeaderComponent from "./components/HeaderComponent";
 import ArtistListComponent from "./components/ArtistListComponent";
 import SongListComponent from "./components/SongListComponent";
 import TagListComponent from "./components/TagListComponent";
+import ArtistShowComponent from "./components/ArtistShowComponent";
+import SongShowComponent from "./components/SongShowComponent";
+import TagShowComponent from "./components/TagShowComponent";
 
 require('./bootstrap');
 
@@ -52,6 +55,24 @@ Vue.component('header-component', HeaderComponent);
             path: '/edit/tags',
             name: 'tag.list',
             component: TagListComponent
+        },
+        {
+            path: '/edit/artists/:artistId',
+            name: 'artist.show',
+            component: ArtistShowComponent,
+            props: true
+        },
+        {
+            path: '/edit/songs/:songId',
+            name: 'song.show',
+            component: SongShowComponent,
+            props: true
+        },
+        {
+            path: '/edit/tags/:tagId',
+            name: 'tag.show',
+            component: TagShowComponent,
+            props: true
         },
      ]
  });

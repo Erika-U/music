@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <div class="text-right m-4">
+            <button class="btn btn-primary">Add</button>
+        </div>
         <table class="table table-hover">
            <thead class="thead-light">
             <tr>
@@ -15,7 +18,9 @@
                 <th scope="row">1</th>
                 <td>Title1</td>
                 <td>
-                    <button class="btn btn-primary">Show</button>
+                    <router-link v-bind:to="{name: 'artist.show', params: {artistId: 1}}">
+                        <button class="btn btn-primary">Show</button>
+                    </router-link>
                 </td>
                 <td>
                     <button class="btn btn-success">Edit</button>
@@ -28,7 +33,9 @@
                 <th scope="row">2</th>
                 <td>Title2</td>
                 <td>
-                    <button class="btn btn-primary">Show</button>
+                    <router-link v-bind:to="{name: 'artist.show', params: {artistId: 2}}">
+                        <button class="btn btn-primary">Show</button>
+                    </router-link>
                 </td>
                 <td>
                     <button class="btn btn-success">Edit</button>
@@ -41,7 +48,9 @@
                 <th scope="row">3</th>
                 <td>Title3</td>
                 <td>
-                    <button class="btn btn-primary">Show</button>
+                    <router-link v-bind:to="{name: 'artist.show', params: {artistId: 3}}">
+                        <button class="btn btn-primary">Show</button>
+                    </router-link>
                 </td>
                 <td>
                     <button class="btn btn-success">Edit</button>
