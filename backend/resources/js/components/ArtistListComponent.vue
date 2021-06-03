@@ -1,7 +1,9 @@
 <template>
     <div class="container">
         <div class="text-right m-4">
-            <button class="btn btn-primary">Add</button>
+            <router-link v-bind:to="{name: 'artist.create'}">
+                <button class="btn btn-primary">Add</button>
+            </router-link>
         </div>
         <table class="table table-hover">
            <thead class="thead-light">
