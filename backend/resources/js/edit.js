@@ -15,6 +15,9 @@ import TagShowComponent from "./components/TagShowComponent";
 import ArtistCreateComponent from "./components/ArtistCreateComponent";
 import SongCreateComponent from "./components/SongCreateComponent";
 import TagCreateComponent from "./components/TagCreateComponent";
+import ArtistEditComponent from "./components/ArtistEditComponent";
+import SongEditComponent from "./components/SongEditComponent";
+import TagEditComponent from "./components/TagEditComponent";
 
 require('./bootstrap');
 
@@ -91,6 +94,21 @@ Vue.component('header-component', HeaderComponent);
             path: '/tags/create',
             name: 'tag.create',
             component: TagCreateComponent
+        },
+        {
+            path: '/artists/edit',
+            name: 'artist.edit',
+            component: ArtistEditComponent
+        },
+        {
+            path: '/songs/edit',
+            name: 'song.edit',
+            component: SongEditComponent
+        },
+        {
+            path: '/tags/edit',
+            name: 'tag.edit',
+            component: TagEditComponent
         },
      ]
  });

@@ -25,7 +25,9 @@
                     </router-link>
                 </td>
                 <td>
-                    <button class="btn btn-success">Edit</button>
+                    <router-link v-bind:to="{name: 'tag.edit', params: {tagId: 1}}">
+                        <button class="btn btn-success">Edit</button>
+                    </router-link>
                 </td>
                 <td>
                     <button class="btn btn-danger">Delete</button>
@@ -40,7 +42,9 @@
                     </router-link>
                 </td>
                 <td>
-                    <button class="btn btn-success">Edit</button>
+                    <router-link v-bind:to="{name: 'tag.edit', params: {tagId: 2}}">
+                        <button class="btn btn-success">Edit</button>
+                    </router-link>
                 </td>
                 <td>
                     <button class="btn btn-danger">Delete</button>
@@ -55,7 +59,9 @@
                     </router-link>
                 </td>
                 <td>
-                    <button class="btn btn-success">Edit</button>
+                    <router-link v-bind:to="{name: 'tag.edit', params: {tagId: 3}}">
+                        <button class="btn btn-success">Edit</button>
+                    </router-link>
                 </td>
                 <td>
                     <button class="btn btn-danger">Delete</button>
