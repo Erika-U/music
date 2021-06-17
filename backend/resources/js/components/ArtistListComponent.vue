@@ -16,50 +16,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Title1</td>
+            <tr v-for="(artist, index) in artists" :key="index">
+                <th scope="row">{{ artist.id }}</th>
+                <td>{{ artist.title }}</td>
+                <td>{{ artist.content }}</td>
+                <td>{{ artist.person_in_charge }}</td>
                 <td>
-                    <router-link v-bind:to="{name: 'artist.show', params: {artistId: 1}}">
+                    <router-link v-bind:to="{name: 'artist.show', params: {artistId: artist.id }}">
                         <button class="btn btn-primary">Show</button>
                     </router-link>
                 </td>
                 <td>
-                    <router-link v-bind:to="{name: 'artist.edit', params: {artistId: 1}}">
-                        <button class="btn btn-success">Edit</button>
-                    </router-link>
-                </td>
-                <td>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Title2</td>
-                <td>
-                    <router-link v-bind:to="{name: 'artist.show', params: {artistId: 2}}">
-                        <button class="btn btn-primary">Show</button>
-                    </router-link>
-                </td>
-                <td>
-                    <router-link v-bind:to="{name: 'artist.edit', params: {artistId: 2}}">
-                        <button class="btn btn-success">Edit</button>
-                    </router-link>
-                </td>
-                <td>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Title3</td>
-                <td>
-                    <router-link v-bind:to="{name: 'artist.show', params: {artistId: 3}}">
-                        <button class="btn btn-primary">Show</button>
-                    </router-link>
-                </td>
-                <td>
-                    <router-link v-bind:to="{name: 'artist.edit', params: {artistId: 3}}">
+                    <router-link v-bind:to="{name: 'artist.edit', params: {artistId: artist.id }}">
                         <button class="btn btn-success">Edit</button>
                     </router-link>
                 </td>
@@ -73,5 +41,22 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+       data: function () {
+           return {
+               artists: []
+           }
+       },
+       methods: {
+           getArtists() {
+               axios.get('/api/artists')
+                   .then((res) => {
+                       this.artists = res.data;
+                   });
+           }
+       },
+       mounted() {
+           this.getArtists();
+       }
+   }
 </script>

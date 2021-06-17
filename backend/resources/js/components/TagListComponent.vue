@@ -16,50 +16,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Title1</td>
+            <tr v-for="(tag, index) in tags" :key="index">
+                <th scope="row">{{ tag.id }}</th>
+                <td>{{ tag.title }}</td>
+                <td>{{ tag.content }}</td>
+                <td>{{ tag.person_in_charge }}</td>
                 <td>
-                    <router-link v-bind:to="{name: 'tag.show', params: {tagId: 1}}">
+                    <router-link v-bind:to="{name: 'tag.show', params: {tagId: tag.id }}">
                         <button class="btn btn-primary">Show</button>
                     </router-link>
                 </td>
                 <td>
-                    <router-link v-bind:to="{name: 'tag.edit', params: {tagId: 1}}">
-                        <button class="btn btn-success">Edit</button>
-                    </router-link>
-                </td>
-                <td>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Title2</td>
-                <td>
-                    <router-link v-bind:to="{name: 'tag.show', params: {tagId: 2}}">
-                        <button class="btn btn-primary">Show</button>
-                    </router-link>
-                </td>
-                <td>
-                    <router-link v-bind:to="{name: 'tag.edit', params: {tagId: 2}}">
-                        <button class="btn btn-success">Edit</button>
-                    </router-link>
-                </td>
-                <td>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Title3</td>
-                <td>
-                    <router-link v-bind:to="{name: 'tag.show', params: {tagId: 3}}">
-                        <button class="btn btn-primary">Show</button>
-                    </router-link>
-                </td>
-                <td>
-                    <router-link v-bind:to="{name: 'tag.edit', params: {tagId: 3}}">
+                    <router-link v-bind:to="{name: 'tag.edit', params: {tagId: tag.id }}">
                         <button class="btn btn-success">Edit</button>
                     </router-link>
                 </td>
@@ -73,5 +41,22 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+       data: function () {
+           return {
+               tags: []
+           }
+       },
+       methods: {
+           getTags() {
+               axios.get('/api/tags')
+                   .then((res) => {
+                       this.tags = res.data;
+                   });
+           }
+       },
+       mounted() {
+           this.getTags();
+       }
+   }
 </script>
